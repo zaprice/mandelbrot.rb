@@ -11,7 +11,7 @@ module Mandelbrot
     #Check if iterated polynomial tends to infinity, i.e. if it passes our approximation threshold
     grid.map! { |row| row.map { |num| iterate(num)  < INFINITY_THRESHOLD} }
     #Draw the image
-    puts draw(grid)
+    draw grid
   end
 
   def self.build_grid x, y, scale
@@ -35,5 +35,13 @@ module Mandelbrot
       str << "\n"
     end
     str
+  end
+
+  def self.write filename=nil
+    if filename
+      File.open(filename, 'w') { |file| file.write generate }
+    else 
+      puts generate
+    end
   end
 end
