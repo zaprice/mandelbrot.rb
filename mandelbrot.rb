@@ -1,9 +1,13 @@
 module Mandelbrot
-  INFINITY_THRESHOLD = 1e+1
+  # Constants that determine how the image is displayed
+  INFINITY_THRESHOLD = 1e+100
   ITERATIONS = 23
   X_SIZE = 2
   Y_SIZE = 1
-  SCALE = 50.0
+  SCALE = 200.0
+  # If you increase MANDELBROT_EXPONENT above 2, you will get multibrot sets
+  MANDELBROT_EXPONENT = 2
+
 
   def self.generate
     #Create grid of complex numbers
@@ -21,7 +25,7 @@ module Mandelbrot
   def self.iterate c
     z = 0
     ITERATIONS.times do
-      z = z * z + c
+      z = z ** MANDELBROT_EXPONENT + c
     end
     z.abs
   end
