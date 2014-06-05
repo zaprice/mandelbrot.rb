@@ -4,17 +4,17 @@ module Mandelbrot
   ITERATIONS = 23
   X_SIZE = 2
   Y_SIZE = 1
-  SCALE = 200.0
+  SCALE = 400.0
   # If you increase MANDELBROT_EXPONENT above 2, you will get multibrot sets
   MANDELBROT_EXPONENT = 2
 
 
   def self.generate
-    #Create grid of complex numbers
+    # Create grid of complex numbers
     grid = build_grid X_SIZE, Y_SIZE, SCALE 
-    #Check if iterated polynomial tends to infinity, i.e. if it passes our approximation threshold
+    # Check if iterated polynomial tends to infinity, i.e. if it passes our approximation threshold
     grid.map! { |row| row.map { |num| iterate(num)  < INFINITY_THRESHOLD} }
-    #Draw the image
+    # Draw the image
     draw grid
   end
 
